@@ -1,7 +1,7 @@
 # Checkpoint 3 - Pacman
 
 Integrantes do grupo que realizaram o Checkpoint:
-
+ 
 Amanda da Silva Fernandes - RM86688
 Gabriel Antonio Luiz Tomaz Assunção - RM86675
 Guilherme Augusto de Oliveira Carvalho - RM86734 
