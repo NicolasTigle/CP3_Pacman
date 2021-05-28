@@ -12,11 +12,11 @@ import javax.swing.SwingUtilities;
 public class Game extends JFrame implements KeyListener {
 
 	private static final long serialVersionUID = 1L;
-	private Player player = new Player(50, 50, 180);
-	private Ghost ghost1 = new Ghost(0, 0, 0);
-	private Ghost ghost2 = new Ghost(500, 0, 0);
-	private Ghost ghost3 = new Ghost(0, 500, 0);
-	private Ghost ghost4 = new Ghost(500, 500, 0);
+	private Player player = new Player(300, 300, 180);
+	private Ghost ghost1 = new Ghost(0, 0, 180);
+	private Ghost ghost2 = new Ghost(600, 0, 180);
+	private Ghost ghost3 = new Ghost(0, 600, 0);
+	private Ghost ghost4 = new Ghost(600, 600, 0);
 	private Bomb bomb = new Bomb(100, 100);
 	private Booster booster = new Booster(400, 400, 60);
 
@@ -97,29 +97,21 @@ public class Game extends JFrame implements KeyListener {
 			}
 			
 			player.move();
+			
 			ghost1.move();
 			ghost2.move();
 			ghost3.move();
 			ghost4.move();
-
-			if(!player.isInvincible()) {
-				if(ghost1.verifyColision(player)) player.setLife(player.getLife()-1);;
-				if(ghost2.verifyColision(player)) player.setLife(player.getLife()-1);;
-				if(ghost3.verifyColision(player)) player.setLife(player.getLife()-1);;
-				if(ghost4.verifyColision(player)) player.setLife(player.getLife()-1);;
-			}
+		
+			ghost1.verifyCollision(player);
+			ghost2.verifyCollision(player);
+			ghost3.verifyCollision(player);
+			ghost4.verifyCollision(player);
 			
-			if(bomb.verifyColision(player)) {	
-				if(!player.isInvincible()) {
-					player.setLife(player.getLife()-1);								
-				}
-				bomb.setVisible(false);
-			}
-			if(booster.verifyInvencible(player)) {
-				player.setInvincible(true);
-				booster.setVisible(false);
-			}
-						
+			bomb.verifyCollision(player);
+	
+			booster.verifyCollision(player);
+	
 			try {
 				Thread.sleep(speed);
 			} catch (InterruptedException e) {
