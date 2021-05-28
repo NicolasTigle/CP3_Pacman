@@ -13,19 +13,26 @@ public class Ghost extends GameObject{
 		setDirection(direction);
 	}
 	
-	public boolean verifyColision(Player player) {
+	public void verifyCollision(Player player) {
 
-		int xGhost = this.getX();
-		int yGhost = this.getY();
+		if(!player.isInvincible()) {
 		
-		int leftX = xGhost - 20;
-		int rightX = xGhost + 20;
-		
-		int upY = yGhost - 40;
-		int downY = yGhost + 40;
-		
-		return ((player.getX() >= leftX && player.getX() <= rightX) && (player.getY() >= upY && player.getY() <= downY));
-		
+			int xGhost = this.getX();
+			int yGhost = this.getY();
+			
+			int leftX = xGhost - 20;
+			int rightX = xGhost + 20;
+			
+			int upY = yGhost - 40;
+			int downY = yGhost + 40;
+			
+			if ((player.getX() >= leftX && player.getX() <= rightX)
+				&& (player.getY() >= upY && player.getY() <= downY)) {	
+				
+				player.setLife(player.getLife()-1);				
+			}
+			
+		}
 	}
 	
 	public boolean canMove() {

@@ -21,7 +21,7 @@ public class Booster extends Item{
 		if (duration > 0) this.duration = duration;
 	}
 	
-	public boolean verifyInvencible(Player player) {
+	public void verifyCollision(Player player) {
 		
 		int xBooster = this.getX();
 		int yBooster = this.getY();
@@ -32,7 +32,12 @@ public class Booster extends Item{
 		int upY = yBooster - 40;
 		int downY = yBooster + 40;
 		
-		return ((player.getX() >= leftX && player.getX() <= rightX) && (player.getY() >= upY && player.getY() <= downY));
+		if ((player.getX() >= leftX && player.getX() <= rightX)
+			&& (player.getY() >= upY && player.getY() <= downY)) {
+			
+			player.setInvincible(true);
+			this.setVisible(false);
+		}
 		
 	}
 	

@@ -10,7 +10,7 @@ public class Bomb extends Item{
 		super(x, y);
 	}
 	
-	public boolean verifyColision(Player player) {
+	public void verifyCollision(Player player) {
 		
 		if (isVisible()) {
 		
@@ -23,11 +23,17 @@ public class Bomb extends Item{
 			int upY = yBomb - 40;
 			int downY = yBomb + 40;
 			
-			return ((player.getX() >= leftX && player.getX() <= rightX) && (player.getY() >= upY && player.getY() <= downY));
+			if ((player.getX() >= leftX && player.getX() <= rightX) 
+				&& (player.getY() >= upY && player.getY() <= downY)) {
+				
+				if(!player.isInvincible()) {		
+					player.setLife(player.getLife()-1);					
+				}
+				this.setVisible(false);
+				
+			}
 			
 		}
-		
-		return false;
 		
 	}
 	
