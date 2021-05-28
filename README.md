@@ -1,5 +1,4 @@
-# Checkpoint 3 - Pacman
-# Grupo ZeniTI
+# Checkpoint 3 Pacman - Grupo ZeniTI
  
 Integrantes do grupo que realizaram o Checkpoint:
  
